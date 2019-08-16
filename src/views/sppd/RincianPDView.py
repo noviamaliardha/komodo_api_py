@@ -5,7 +5,7 @@ from ...models.sppd.RincianPDModel import RincianPDModel, RincianPDSchema
 
 sppd_rincianpd_api = Blueprint('sppd_rincianpd_api', __name__)
 rincianpd_schema = RincianPDSchema()
-
+ 
 #-------------------------------------------------------------------------
 @sppd_rincianpd_api.route('/create_rincianpd', methods=['POST'])
 def create():

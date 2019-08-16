@@ -5,7 +5,7 @@ from ...models.sppd.TarifModel import TarifModel, TarifSchema
 
 sppd_tarif_api = Blueprint('sppd_tarif_api', __name__)
 tarif_schema = TarifSchema()
-
+ 
 #-------------------------------------------------------------------------
 @sppd_tarif_api.route('/create_tarif', methods=['POST'])
 def create():

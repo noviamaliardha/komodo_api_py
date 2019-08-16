@@ -2,7 +2,7 @@ from .. import db
 from .. import db
 from marshmallow import fields, Schema
 import uuid
-
+ 
 class ApprovalModel(db.Model):
   """
   Approval Model

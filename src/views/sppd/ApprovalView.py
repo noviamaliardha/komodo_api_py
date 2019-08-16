@@ -5,7 +5,7 @@ from ...models.sppd.ApprovalModel import ApprovalModel, ApprovalSchema
 
 sppd_approval_api = Blueprint('sppd_approval_api', __name__)
 approval_schema = ApprovalSchema()
-
+ 
 #-------------------------------------------------------------------------
 @sppd_approval_api.route('/create_approval', methods=['POST'])
 def create():

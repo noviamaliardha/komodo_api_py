@@ -5,7 +5,7 @@ from ...models.sppd.PerjalananDinasModel import PerjalanandinasModel, Perjalanan
 
 sppd_perjalanandinas_api = Blueprint('sppd_perjalanandinas_api', __name__)
 perjalanandinas_schema = PerjalanandinasSchema()
-
+ 
 #-------------------------------------------------------------------------
 @sppd_perjalanandinas_api.route('/create_perjalanan_dinas', methods=['POST'])
 def create():

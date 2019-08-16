@@ -2,7 +2,7 @@ from .. import db
 from .. import db
 from marshmallow import fields, Schema
 import uuid
-
+ 
 class RincianPDModel(db.Model):
   """
   rincianpd Model

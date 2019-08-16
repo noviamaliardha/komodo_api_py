@@ -5,7 +5,7 @@ from ...models.sppd.NegaraModel import NegaraModel, NegaraSchema
 
 sppd_negara_api = Blueprint('sppd_negara_api', __name__)
 negara_schema = NegaraSchema()
-
+ 
 #-------------------------------------------------------------------------
 @sppd_negara_api.route('/create_negara', methods=['POST'])
 def create():

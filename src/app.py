@@ -3,7 +3,7 @@
 from flask   import Flask
 from .config import app_config
 from .models import db
-
+ 
 # import user_api blueprint
 <<<<<<< HEAD
 from .views.UserView import user_api as user_blueprint

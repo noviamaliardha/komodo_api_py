@@ -2,7 +2,7 @@ from .. import db
 from .. import db
 from marshmallow import fields, Schema
 import uuid
-
+ 
 class NegaraModel(db.Model):
   """
   Negara Model

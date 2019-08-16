@@ -5,7 +5,7 @@ from ...models.sppd.KotaModel import KotaModel, KotaSchema
 
 sppd_kota_api = Blueprint('sppd_kota_api', __name__)
 kota_schema = KotaSchema()
-
+ 
 #-------------------------------------------------------------------------
 @sppd_kota_api.route('/create_kota', methods=['POST'])
 def create():

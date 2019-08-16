@@ -5,7 +5,7 @@ from ...models.sppd.PembayaranModel import PembayaranModel, PembayaranSchema
 
 sppd_pembayaran_api = Blueprint('sppd_pembayaran_api', __name__)
 pembayaran_schema = PembayaranSchema()
-
+ 
 #-------------------------------------------------------------------------
 @sppd_pembayaran_api.route('/create_pembayaran', methods=['POST'])
 def create():

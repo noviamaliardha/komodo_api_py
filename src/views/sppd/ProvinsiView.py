@@ -5,7 +5,7 @@ from ...models.sppd.ProvinsiModel import ProvinsiModel, ProvinsiSchema
 
 sppd_provinsi_api = Blueprint('sppd_provinsi_api', __name__)
 provinsi_schema = ProvinsiSchema()
-
+ 
 #-------------------------------------------------------------------------
 @sppd_provinsi_api.route('/create_provinsi', methods=['POST'])
 def create():
