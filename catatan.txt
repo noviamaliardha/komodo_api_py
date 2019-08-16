@@ -1,3 +1,7 @@
 $env:JWT_SECRET_KEY = "raka"
+<<<<<<< HEAD
 $env:DATABASE_URL = "postgres://postgres:GW#2018@156.67.219.47:5432/komodo_hrm"
+=======
+$env:DATABASE_URL = "postgres://postgres:postgres@localhost:5432/komodo"
+>>>>>>> b5d217f37075e83e9f418a94be3674e14bd58dc6
 $env:FLASK_ENV = "development"
