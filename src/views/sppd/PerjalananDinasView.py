@@ -13,10 +13,8 @@ def create():
   Create perjalanandinas
   """
   req_data = request.get_json()
-  #req_data['name'] = g.user.get('name')
   data, error = perjalanandinas_schema.load(req_data)
-  cek = PerjalanandinasModel.get_one_perjalanandinas(req_data['ID_PERJALANAN_DINAS'])
-  if error or cek :
+  if error:
     return custom_response({'status': 'failed','message':'failed insert data'}, 400)
   post = PerjalanandinasModel(data)
   post.save()

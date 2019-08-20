@@ -10,22 +10,22 @@ class PerjalanandinasModel(db.Model):
   __tablename__ = "T_PERJALANAN_DINAS"
   __table_args__ = {'schema' : 'newsppd'}
 
-  ID_PERJALANAN_DINAS = db.Column(db.String(100),primary_key = True)
-  TGL_JAM_MULAI = db.Column(db.String(100),nullable = False)
-  TGL_JAM_SELESAI = db.Column(db.String(100),nullable = False)
-  ID_KOTA_AWAL = db.Column(db.String(100),nullable = False)
-  ID_KOTA_AKHIR = db.Column(db.String(100),nullable = False)
-  ID_PERSON = db.Column(db.String(100),nullable = False)
-  STATUS = db.Column(db.String(100),nullable = False)
+  ID_PERJALANAN_DINAS = db.Column(db.String(255), primary_key = True, nullable = True)
+  TGL_JAM_MULAI = db.Column(db.String(100),nullable = True)
+  TGL_JAM_SELESAI = db.Column(db.String(100),nullable = True)
+  ID_KOTA_AWAL = db.Column(db.String(100),nullable = True)
+  ID_KOTA_AKHIR = db.Column(db.String(100),nullable = True)
+  ID_PERSON = db.Column(db.String(100),nullable = True)
+  STATUS = db.Column(db.String(100),nullable = True)
 
   def __init__(self, data):
-    ID_PERJALANAN_DINAS = str(uuid.uuid1())
-    TGL_JAM_MULAI = data.get('TGL_JAM_MULAI')
-    TGL_JAM_SELESAI = data.get('TGL_JAM_SELESAI')
-    ID_KOTA_AWAL = data.get('ID_KOTA_AWAL')
-    ID_KOTA_AKHIR = data.get('ID_KOTA_AKHIR')
-    ID_PERSON = data.get('ID_PERSON')
-    STATUS = data.get('STATUS')
+    self.ID_PERJALANAN_DINAS = str(uuid.uuid1())
+    self.TGL_JAM_MULAI = data.get('TGL_JAM_MULAI')
+    self.TGL_JAM_SELESAI = data.get('TGL_JAM_SELESAI')
+    self.ID_KOTA_AWAL = data.get('ID_KOTA_AWAL')
+    self.ID_KOTA_AKHIR = data.get('ID_KOTA_AKHIR')
+    self.ID_PERSON = data.get('ID_PERSON')
+    self.STATUS = data.get('STATUS')
 
   def save(self):
     db.session.add(self)

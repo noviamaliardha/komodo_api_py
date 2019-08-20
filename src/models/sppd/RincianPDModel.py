@@ -22,10 +22,10 @@ class RincianPDModel(db.Model):
 
   def __init__(self, data):
     self.ID_RINCIAN_PD = str(uuid.uuid1())
-    self.ID_PD = data.get('ID_KOTA_AWAL')
-    self.ID_M_TARIF = data.get('ID_KOTA_AKHIR')
-    self.ID_EVIDENCE = data.get('ID_LEVEL')
-    self.NAMA_RINCIAN = data.get('NOMINAL')
+    self.ID_PD = data.get('ID_PD')
+    self.ID_M_TARIF = data.get('ID_M_TARIF')
+    self.ID_EVIDENCE = data.get('ID_EVIDENCE')
+    self.NAMA_RINCIAN = data.get('NAMA_RINCIAN')
     self.NOMINAL = data.get('NOMINAL')
 
   def save(self):
