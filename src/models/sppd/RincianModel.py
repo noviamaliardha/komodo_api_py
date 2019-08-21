@@ -3,23 +3,23 @@ from .. import db
 from marshmallow import fields, Schema
 import uuid
  
-class NegaraModel(db.Model):
+class RincianModel(db.Model):
   """
-  Negara Model
+  rincian Model
   """
 
-  __tablename__ = "M_NEGARA"
+  __tablename__ = "M_RINCIAN"
   __table_args__ = {'schema' : 'newsppd'}
 
 
-  ID_NEGARA = db.Column(db.String(100), primary_key=True)
-  NAMA_NEGARA = db.Column(db.String(100),nullable = False)
+  ID_JENIS_RINCIAN = db.Column(db.String(100), primary_key=True)
+  NAMA_JENIS_RINCIAN = db.Column(db.String(100),nullable = False)
   STATUS = db.Column(db.Boolean(0),nullable = False)
 
 
   def __init__(self, data):
-    self.ID_NEGARA = str(uuid.uuid1())
-    self.NAMA_NEGARA = data.get('NAMA_NEGARA')
+    self.ID_JENIS_RINCIAN = str(uuid.uuid1())
+    self.NAMA_JENIS_RINCIAN = data.get('NAMA_JENIS_RINCIAN')
     self.STATUS = data.get('STATUS')
 
   def save(self):
@@ -37,17 +37,17 @@ class NegaraModel(db.Model):
     db.session.commit()
   
   @staticmethod
-  def master_negara():
-    return NegaraModel.query.all()
+  def master_rincian():
+    return RincianModel.query.all()
   
   @staticmethod
-  def get_one_negara(ID_NEGARA):
-    return NegaraModel.query.get(ID_NEGARA)
+  def get_one_rincian(ID_JENIS_RINCIAN):
+    return RincianModel.query.get(ID_JENIS_RINCIAN)
 
   def __repr__(self):
-    return '<ID_NEGARA {}>'.format(self.ID_NEGARA)
+    return '<ID_JENIS_RINCIAN {}>'.format(self.ID_JENIS_RINCIAN)
 
-class NegaraSchema(Schema):
-    ID_NEGARA = fields.Str(dump_only=True)
-    NAMA_NEGARA = fields.Str(required=True)
+class RincianSchema(Schema):
+    ID_JENIS_RINCIAN = fields.Str(dump_only=True)
+    NAMA_JENIS_RINCIAN = fields.Str(required=True)
     STATUS = fields.Bool(required=True)

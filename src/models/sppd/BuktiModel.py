@@ -2,7 +2,7 @@
 from .. import db
 from marshmallow import fields, Schema
 import datetime, uuid
-
+ 
 class BuktiModel(db.Model):
 
   __tablename__ = 'T_BUKTI'

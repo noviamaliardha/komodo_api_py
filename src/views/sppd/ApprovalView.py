@@ -1,85 +1,85 @@
-#/src/views/provinsiView.py
+#/src/views/ApprovalView.py
 from flask import request, g, Blueprint, json, Response
 from ...shared.Authentication import Auth
-from ...models.sppd.ProvinsiModel import ProvinsiModel, ProvinsiSchema
+from ...models.sppd.ApprovalModel import ApprovalModel, ApprovalSchema
 
-sppd_provinsi_api = Blueprint('sppd_provinsi_api', __name__)
-provinsi_schema = ProvinsiSchema()
+sppd_approval_api = Blueprint('sppd_approval_api', __name__)
+approval_schema = ApprovalSchema()
  
 #-------------------------------------------------------------------------
-@sppd_provinsi_api.route('/create_provinsi', methods=['POST'])
+@sppd_approval_api.route('/create_approval', methods=['POST'])
 def create():
   """
-  Create provinsi
+  Create approval
   """
   req_data = request.get_json()
   #req_data['name'] = g.user.get('name')
-  data, error = provinsi_schema.load(req_data)
-  cek = ProvinsiModel.get_one_provinsi(req_data['NAMA_PROVINSI'])
+  data, error = approval_schema.load(req_data)
+  cek = ApprovalModel.get_one_approval(req_data['ID_PERSON'])
   if error or cek :
     return custom_response({'status': 'failed','message':'failed insert data'}, 400)
-  post = ProvinsiModel(data)
+  post = ApprovalModel(data)
   post.save()
 
-  data = provinsi_schema.dump(post).data
+  data = approval_schema.dump(post).data
   return custom_response({'status': 'success','message':'success insert data',"data":data}, 200)
 #-------------------------------------------------------------------------
 #-------------------------------------------------------------------------
-@sppd_provinsi_api.route('/master_provinsi', methods=['GET'])
+@sppd_approval_api.route('/master_approval', methods=['GET'])
 def get_all():
   """
-  Get All provinsi
+  Get All approval
   """
-  posts = ProvinsiModel.master_provinsi()
-  data = provinsi_schema.dump(posts, many=True).data
+  posts = ApprovalModel.master_approval()
+  data = approval_schema.dump(posts, many=True).data
   return custom_response({'status': 'success','message':'data found',"data":data}, 200)
 #-------------------------------------------------------------------------
 #-------------------------------------------------------------------------
-@sppd_provinsi_api.route('/view_provinsi',   methods=['POST'])
+@sppd_approval_api.route('/view_approval',   methods=['POST'])
 def get_one():
   """
-  Get A provinsi
+  Get approval
   """
   req_data = request.get_json()
-  post = ProvinsiModel.get_one_provinsi(req_data['ID_PROVINSI'])
+  post = ApprovalModel.get_one_approval(req_data['ID_APPROVAL'])
   if not post:
     return custom_response({'status': 'failed','message':'data not found',"data":""}, 404)
-  data = provinsi_schema.dump(post).data
+  data = approval_schema.dump(post).data
   return custom_response({'status': 'success','message':'data found',"data":data}, 200)
 #-------------------------------------------------------------------------
 #-------------------------------------------------------------------------
-@sppd_provinsi_api.route('/update_provinsi', methods=['POST'])
+@sppd_approval_api.route('/update_approval', methods=['POST'])
 def update():
   """
-  Update Data provinsi
+  Update Data approval
   """
   req_data = request.get_json()
-  post = ProvinsiModel.get_one_provinsi(req_data['ID_PROVINSI'])
+  post = ApprovalModel.get_one_approval(req_data['ID_APPROVAL'])
   if not post:
     return custom_response({'error': 'post not found'}, 404)
-  data = provinsi_schema.dump(post).data
+  data = approval_schema.dump(post).data
   #  if data.get('owner_id') != g.user.get('id'):
   #    return custom_response({'error': 'permission denied'}, 400)
  
-  data, error = provinsi_schema.load(req_data, partial=True)
+  data, error = approval_schema.load(req_data, partial=True)
   if error:
     return custom_response(error, 400)
   post.update(data)
   
-  data = provinsi_schema.dump(post).data
+  data = approval_schema.dump(post).data
   return custom_response({'status': 'success','message':'data updated!',"data":data}, 200)
 #-------------------------------------------------------------------------
 #-------------------------------------------------------------------------
-@sppd_provinsi_api.route('/delete_provinsi', methods=['POST'])
+@sppd_approval_api.route('/delete_approval', methods=['POST'])
 def delete():
   """
-  Delete A provinsi
+  Delete approval
   """
   req_data = request.get_json()
-  post = ProvinsiModel.get_one_provinsi(req_data['ID_PROVINSI'])
+  post = ApprovalModel.get_one_approval(req_data['ID_APPROVAL'])
   if not post:
     return custom_response({'error': 'data not found'}, 404)
-  data = provinsi_schema.dump(post).data
+  data = approval_schema.dump(post).data
   #if data.get('owner_id') != g.user.get('id'):
   # return custom_response({'error': 'permission denied'}, 400)
   post.delete()

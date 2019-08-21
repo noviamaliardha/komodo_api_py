@@ -4,14 +4,14 @@ from ...shared.Authentication   import Auth
 from ...models.sppd.BuktiModel  import BuktiModel, BuktiSchema
 import os
 
-
-bukti_api          = Blueprint('bukti_api', __name__)
+sppd_bukti_api          = Blueprint('sppd_bukti_api', __name__)
 bukti_schema       = BuktiSchema()
 
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'exe', 'json'])
 UPLOAD_FOLDER      = 'C:/xampp/htdocs/komodo_api_py/src/uploads'
 #-------------------------------------------------------------------------
-@bukti_api.route('/create_bukti', methods=['POST'])
+
+@sppd_bukti_api.route('/create_bukti', methods=['POST'])
 def create():
   try:
     req_data = {} #pembuatan array utk dipakai schema pada bukti_schema
@@ -42,7 +42,7 @@ def create():
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 #-------------------------------------------------------------------------
-@bukti_api.route('/master_bukti', methods=['GET'])
+@sppd_bukti_api.route('/master_bukti', methods=['GET'])
 def get_all():
   """
   Get All bukti
@@ -51,7 +51,7 @@ def get_all():
   data = bukti_schema.dump(posts, many=True).data
   return custom_response({'status': 'success','message':'data found',"data":data}, 200)
 #-------------------------------------------------------------------------
-@bukti_api.route('/view_bukti',   methods=['POST'])
+@sppd_bukti_api.route('/view_bukti',   methods=['POST'])
 def get_one():
   """
   Get A bukti
@@ -63,7 +63,7 @@ def get_one():
   data = bukti_schema.dump(post).data
   return custom_response({'status': 'success','message':'data found',"data":data}, 200)
 #-------------------------------------------------------------------------
-@bukti_api.route('/update_bukti', methods=['POST'])
+@sppd_bukti_api.route('/update_bukti', methods=['POST'])
 def update():
   try:
     req_data = {}
@@ -93,7 +93,7 @@ def update():
   except :
     return custom_response({'status': 'success','message':'data found',"data":"ERROR"}, 200)
 #-------------------------------------------------------------------------
-@bukti_api.route('/delete_bukti', methods=['POST'])
+@sppd_bukti_api.route('/delete_bukti', methods=['POST'])
 def delete():
   """
   Delete A bukti
